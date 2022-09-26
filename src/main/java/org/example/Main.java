@@ -3,10 +3,12 @@ package org.example;
 public class Main {
     public static void main(String[] args) {
         StringCalculator sum = new StringCalculator();
-        try{
+        try
+        {
             System.out.println(sum.add("-1,-2"));
         }
-        catch (Exception exception ) {
+        catch(Exception exception)
+        {
             exception.printStackTrace(System.out);
         }
     }

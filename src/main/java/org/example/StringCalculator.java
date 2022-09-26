@@ -50,8 +50,8 @@ public class StringCalculator
             }
         }
 
-        if (!negative_numbers_str.isEmpty()) {
-            negative_numbers_str = "Negative numbers not allowed. This numbers are: " + negative_numbers_str;
+        if (!negative_numbers_str.isEmpty())
+        {
             NegativeValues.throwException(negative_numbers_str);
         }
 
@@ -59,22 +59,30 @@ public class StringCalculator
     }
 
     //перевірка на нестандартні роздільники та правильність їх оформлення
-    public static boolean checkDelimiters(String numbers)
+    private static boolean checkDelimiters(String numbers)
     {
         return (numbers.indexOf("/", 0) == 0 && numbers.indexOf("/", 1) == 1);
     }
 
-    public static String make_string_delimiters(String[] delimiters, String delimiters_part)
+    //створення рядку з роздільників для регулярного виразу
+    private static String make_string_delimiters(String[] delimiters, String delimiters_part)
     {
         String delimiter = "";
         if (delimiters.length >= 2) //більше однієї заданої квадратної дужки
         {
-            for (int element = 0; element < delimiters.length - 1; element++)
+            for (int element = 0; element < delimiters.length; element++)
             {
-                delimiter += delimiters[element] + "]+|";
-            }
+                delimiter += delimiters[element];
 
-            delimiter += delimiters[delimiters.length - 1] + "]+";
+                if (element != delimiters.length - 1)
+                {
+                    delimiter += "]+|";
+                }
+                else
+                {
+                    delimiter += "]+";
+                }
+            }
         }
         else
         {

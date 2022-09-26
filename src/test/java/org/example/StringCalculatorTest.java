@@ -40,9 +40,9 @@ class StringCalculatorTest {
 
     @Test
     public void step5(){
-        calc.add("-1,-2,-3");
-        //assertThrows(NegativeValues.class, () -> calc.add("-3,2,1,4,7"));
-        //assertThrows(NegativeValues.class, () -> calc.add("6,3,2,-1"));
+        assertThrows(IllegalArgumentException.class, () -> calc.add("-1,-2,-3"));
+        assertThrows(IllegalArgumentException.class, () -> calc.add("-3,2,1,4,7"));
+        assertThrows(IllegalArgumentException.class, () -> calc.add("6,3,2,-1"));
     }
 
     @Test
@@ -70,5 +70,6 @@ class StringCalculatorTest {
     public void step9(){
         assertEquals(20, calc.add("//[;;][!]\n2;;0!!18"));
         assertEquals(12, calc.add("//[s][xx][{}]\n6{}3s2xx1"));
+        assertEquals(34, calc.add("//[*][**]\n6**24***4"));
     }
 }
